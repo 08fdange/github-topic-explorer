@@ -16,8 +16,7 @@ const SearchForm = styled.form`
     background-color: #0d1117;
   }
   :focus-within {
-    border-color: #2f81f7;
-    box-shadow: 0 0 0 2px rgba(47, 129, 247, 0.3);
+    border: 2px solid #1f6feb;
   }
 `;
 
