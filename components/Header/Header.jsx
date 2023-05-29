@@ -6,7 +6,7 @@ const HeaderContainer = styled.div`
   background-color: #161b22;
   color: rgba(255,255,255,0.7);
   display: flex;
-  padding: 16px;
+  padding: 12px;
   :before {
     background: url("/icons/github-icon.svg") no-repeat;
     content: "";
