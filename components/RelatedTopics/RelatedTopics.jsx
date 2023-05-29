@@ -73,7 +73,7 @@ const RelatedTopics = ({ topicName, onTopicClick }) => {
   if (error || loading) {
     return (
       <AlternateContainer>
-        { loading ? <LoadingSpinner /> : <p>Error :(</p> }
+        { loading ? <LoadingSpinner /> : <p>Error ☹️</p> }
       </AlternateContainer>
     )
   };

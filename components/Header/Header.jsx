@@ -1,5 +1,8 @@
 import React from 'react';
+import Image from 'next/image';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
+import SearchBar from '../SearchBar/SearchBar';
 
 const HeaderContainer = styled.div`
   align-items: center;
@@ -7,23 +10,35 @@ const HeaderContainer = styled.div`
   color: rgba(255,255,255,0.7);
   display: flex;
   padding: 12px;
-  :before {
-    background: url("/icons/github-icon.svg") no-repeat;
-    content: "";
-    display: block;
-    float: left;
-    margin: 0 16px;
-    height: 40px;
-    width: 40px;
+`;
+
+const Title = styled.div`
+  margin-right: 16px;
+  white-space: nowrap;
+
+  @media (max-width: 768px) {
+    display: none;
   }
 `;
 
-const Header = ({ title }) => {
+const githubIconStyles = css`
+  margin-left: 16px;
+`;
+
+const Header = ({ onSearch, title }) => {
   return (
     <HeaderContainer>
-      {title}
+      <Image
+        src="/icons/github-icon.svg"
+        alt="Github Icon"
+        height={40}
+        width={40}
+        css={githubIconStyles}
+      />
+      <SearchBar onSearch={onSearch} />
+      <Title>{title}</Title>
     </HeaderContainer>
   )
-}
+};
 
 export default Header;

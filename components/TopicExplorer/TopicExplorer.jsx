@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
+import Header from '../Header/Header';
 import RelatedTopics from '../RelatedTopics/RelatedTopics';
 import History from '../History/History';
 
@@ -26,16 +27,22 @@ const TopicExplorer = () => {
   };
 
   return (
-    <MainContainer>
-      <History 
-        handleHistoryClick={handleHistoryClick} 
-        history={history} 
+    <>
+      <Header 
+        onSearch={handleTopicClick} 
+        title="Github Topic Explorer" 
       />
-      <RelatedTopics
-        topicName={currentTopic}
-        onTopicClick={handleTopicClick}
-      />
-    </MainContainer>
+      <MainContainer>
+        <History 
+          handleHistoryClick={handleHistoryClick} 
+          history={history} 
+        />
+        <RelatedTopics
+          topicName={currentTopic}
+          onTopicClick={handleTopicClick}
+        />
+      </MainContainer>
+    </>
   );
 };
 
