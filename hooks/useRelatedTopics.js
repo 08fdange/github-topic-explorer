@@ -20,7 +20,7 @@ const useRelatedTopics = (topicName, first = 10) => {
   return {
     loading,
     error,
-    topics: data?.topic.relatedTopics,
+    topics: data?.topic?.relatedTopics || [],
   };
 };
 

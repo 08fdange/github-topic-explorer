@@ -1,11 +1,8 @@
 import React from 'react';
-import { Header, TopicExplorer } from '../components';
+import { TopicExplorer } from '../components';
 
 const Home = () => (
-  <div>
-    <Header title="Github Topic Explorer" />
-    <TopicExplorer />
-  </div>
+  <TopicExplorer />
 );
 
 export default Home;
