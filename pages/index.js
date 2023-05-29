@@ -1,13 +1,11 @@
-import { Animated, Basic, bounce, Combined } from '../shared/styles'
+import React from 'react';
+import { Header, TopicExplorer } from '../components';
 
 const Home = () => (
   <div>
-    <Basic>Cool Styles</Basic>
-    <Combined>
-      With <code>:hover</code>.
-    </Combined>
-    <Animated animation={bounce}>Let's bounce.</Animated>
+    <Header title="Github Topic Explorer" />
+    <TopicExplorer />
   </div>
-)
+);
 
-export default Home
+export default Home;
