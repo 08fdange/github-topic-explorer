@@ -12,7 +12,7 @@ const HeaderContainer = styled.div`
     content: "";
     display: block;
     float: left;
-    margin-right: 8px;
+    margin: 0 16px;
     height: 40px;
     width: 40px;
   }
