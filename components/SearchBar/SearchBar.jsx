@@ -54,8 +54,9 @@ const SearchBar = ({ onSearch }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setSearchTerm('');
+    if (!searchTerm) return;
     onSearch(searchTerm);
+    setSearchTerm('');
   };
 
   return (
