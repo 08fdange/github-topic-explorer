@@ -1,4 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
+import formatCount from '../../utils/formatCount';
 import RelatedTopics from './RelatedTopics';
 import useRelatedTopics from '../../hooks/useRelatedTopics';
 
@@ -32,7 +33,7 @@ describe('RelatedTopics component', () => {
     render(<RelatedTopics topicName={topicName} onTopicClick={mockOnTopicClick} />);
     mockTopics.forEach((topic) => {
       expect(screen.getByText(topic.name)).toBeInTheDocument();
-      expect(screen.getByText(topic.stargazerCount)).toBeInTheDocument();
+      expect(screen.getByText(formatCount(topic.stargazerCount))).toBeInTheDocument();
     });
   });
 
