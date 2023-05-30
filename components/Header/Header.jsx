@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Image from 'next/image';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
@@ -39,6 +40,11 @@ const Header = ({ onSearch, title }) => {
       <Title>{title}</Title>
     </HeaderContainer>
   )
+};
+
+Header.propTypes = {
+  onSearch: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired
 };
 
 export default Header;

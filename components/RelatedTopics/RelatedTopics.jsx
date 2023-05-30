@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import useRelatedTopics from '../../hooks/useRelatedTopics';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 import styled from '@emotion/styled';
@@ -67,7 +68,7 @@ const Starcount = styled.div`
   }
 `;
 
-const RelatedTopics = ({ topicName, onTopicClick }) => {
+const RelatedTopics = ({ onTopicClick, topicName }) => {
   const { error, loading, topics } = useRelatedTopics(topicName);
 
   if (error || loading) {
@@ -98,6 +99,11 @@ const RelatedTopics = ({ topicName, onTopicClick }) => {
       </TopicsContainer>
     </TopicSection>
   );
+};
+
+RelatedTopics.propTypes = {
+  onTopicClick: PropTypes.func.isRequired,
+  topicName: PropTypes.string.isRequired,
 };
 
 export default RelatedTopics;

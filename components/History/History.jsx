@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 
 const HistoryContainer = styled.div`
@@ -38,6 +39,11 @@ const History = ({ handleHistoryClick, history }) => {
       ))}
     </HistoryContainer>
   );
+};
+
+History.propTypes = {
+  handleHistoryClick: PropTypes.func.isRequired,
+  history: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
 export default History;

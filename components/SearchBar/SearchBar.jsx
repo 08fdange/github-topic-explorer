@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 
 const SearchForm = styled.form`
@@ -69,6 +70,10 @@ const SearchBar = ({ onSearch }) => {
       <SearchButton data-testid="search-button" onClick={handleSubmit} />
     </SearchForm>
   );
+};
+
+SearchBar.propTypes = {
+  onSearch: PropTypes.func.isRequired
 };
 
 export default SearchBar;
