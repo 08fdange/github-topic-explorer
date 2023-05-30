@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from '@emotion/styled';
+import formatCount from '../../utils/formatCount';
 import useRelatedTopics from '../../hooks/useRelatedTopics';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
-import styled from '@emotion/styled';
 
 const TopicSection = styled.div`
   box-sizing: border-box;
@@ -50,6 +51,19 @@ const Topic = styled.div`
 
 const TopicName = styled.p`
   font-size: 20px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+
+
+  @supports (-webkit-line-clamp: 2) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: initial;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
 `;
 
 const Starcount = styled.div`
@@ -92,7 +106,7 @@ const RelatedTopics = ({ onTopicClick, topicName }) => {
               {name}
             </TopicName>
             <Starcount>
-              {stargazerCount}
+              {formatCount(stargazerCount)}
             </Starcount>
           </Topic>
         ))}
