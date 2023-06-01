@@ -13,7 +13,7 @@ export const globalStyles = (
       }
       body {
         margin: 0;
-        overflow-y: 
+        overflow-y: hidden;
       }
     `}
   />
