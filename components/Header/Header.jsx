@@ -13,7 +13,7 @@ const HeaderContainer = styled.div`
   padding: 12px;
 `;
 
-const Title = styled.div`
+const TitleContainer = styled.div`
   margin-right: 16px;
   white-space: nowrap;
 
@@ -22,13 +22,19 @@ const Title = styled.div`
   }
 `;
 
+const Title = styled.h3`
+  font-size: 24px;
+  font-weight: 500;
+  margin: 0;
+`;
+
 const githubIconStyles = css`
   margin-left: 16px;
 `;
 
 const Header = ({ onSearch, title }) => {
   return (
-    <HeaderContainer>
+    <HeaderContainer aria-label="Header" role="banner">
       <Image
         src="/icons/github-icon.svg"
         alt="Github Icon"
@@ -37,7 +43,11 @@ const Header = ({ onSearch, title }) => {
         css={githubIconStyles}
       />
       <SearchBar onSearch={onSearch} />
-      <Title>{title}</Title>
+      <TitleContainer>
+        <Title aria-label="Title">
+          {title}
+        </Title>
+      </TitleContainer>
     </HeaderContainer>
   )
 };

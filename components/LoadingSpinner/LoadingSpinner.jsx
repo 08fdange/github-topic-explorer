@@ -16,7 +16,13 @@ const Spinner = styled.div`
   margin: auto;
 `;
 
-const LoadingSpinner = () => <Spinner data-testid="loading-spinner" />;
+const LoadingSpinner = () => (
+  <Spinner
+    aria-busy="true"
+    aria-label="Loading"
+    role="alert"
+  />
+);
 
 export default LoadingSpinner;
 

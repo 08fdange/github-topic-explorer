@@ -13,7 +13,7 @@ describe('RelatedTopics component', () => {
     useRelatedTopics.mockReturnValue({ loading: true, error: false, topics: [] });
   
     render(<RelatedTopics topicName={topicName} onTopicClick={mockOnTopicClick} />);
-    expect(screen.getByTestId('loading-spinner')).toBeInTheDocument();
+    expect(screen.getByLabelText('Loading')).toBeInTheDocument();
   });
   
   test('renders error state', () => {

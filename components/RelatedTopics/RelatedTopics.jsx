@@ -13,7 +13,7 @@ const TopicSection = styled.div`
   width: 100%;
 `;
 
-const TopicsContainer = styled.div`
+const TopicsContainer = styled.section`
   box-sizing: border-box;
   margin: 8px 0;
 `;
@@ -32,10 +32,12 @@ const CurrentTopic = styled.h4`
   margin: 0;
 `;
 
-const Topic = styled.div`
+const Topic = styled.button`
   align-items: center;
+  background: transparent;
   border: 1px solid rgba(255,255,255,0.7);
   border-radius: 8px;
+  color: #E6EDF3;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
@@ -88,20 +90,26 @@ const RelatedTopics = ({ onTopicClick, topicName }) => {
   if (error || loading) {
     return (
       <AlternateContainer>
-        { loading ? <LoadingSpinner /> : <p>Error ☹️</p> }
+        { loading ? <LoadingSpinner /> : (
+          <p aria-label="Related topics error" role="alert">Error ☹️</p>
+        )}
       </AlternateContainer>
     )
   };
 
   return (
-    <TopicSection>
+    <TopicSection role="main">
       <CurrentTopic>
         {topicName}
       </CurrentTopic>
-      <TopicsContainer>
+      <TopicsContainer aria-label="Related topics">
         {topics.length < 1 && (<TopicName>There are no related topics.</TopicName>)}
         {topics.map(({ name, stargazerCount }) => (
-          <Topic key={name} onClick={() => onTopicClick(name)}>
+          <Topic
+            aria-label={`Topic ${name} with ${stargazerCount} stars`}
+            key={name} 
+            onClick={() => onTopicClick(name)}
+          >
             <TopicName>
               {name}
             </TopicName>

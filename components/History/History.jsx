@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 
-const HistoryContainer = styled.div`
+const HistoryContainer = styled.section`
   border-right: 0.5px solid rgba(255,255,255,0.7);
   box-sizing: border-box;
   height: calc(100vh - 64px);
@@ -17,12 +17,17 @@ const HistoryTitle = styled.h5`
   padding: 0 8px;
 `;
 
-const HistoryEntry = styled.div`
+const HistoryEntry = styled.button`
+  background: transparent;
+  border: none;
   border-radius: 4px;
+  color: #E6EDF3;
   cursor: pointer;
   font-size: 16px;
-  padding: 8px;
   margin-left: 2px;
+  padding: 8px;
+  text-align: left;
+  width: 100%;
   &:hover {
     background-color: rgba(177, 186, 196, 0.12);
   }
@@ -30,10 +35,14 @@ const HistoryEntry = styled.div`
 
 const History = ({ handleHistoryClick, history }) => {
   return (
-    <HistoryContainer>
+    <HistoryContainer aria-label="History">
       <HistoryTitle>History</HistoryTitle>
       {history.map((topicName, index) => (
-        <HistoryEntry key={index} onClick={() => handleHistoryClick(index)}>
+        <HistoryEntry
+          aria-label={`Topic ${topicName}: history item ${index + 1}`} 
+          key={index}
+          onClick={() => handleHistoryClick(index)}
+        >
           {topicName}
         </HistoryEntry>
       ))}

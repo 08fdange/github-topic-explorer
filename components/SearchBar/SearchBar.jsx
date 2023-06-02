@@ -62,13 +62,18 @@ const SearchBar = ({ onSearch }) => {
   return (
     <SearchForm data-testid="search-form" onSubmit={handleSubmit}>
       <SearchInput
-        data-testid="search-input"
+        aria-label="Search for related topics"
+        autoComplete='off'
         onChange={handleChange}
         placeholder="Search for topics related to..."
-        type="text"
+        type="search"
         value={searchTerm}
       />
-      <SearchButton data-testid="search-button" onClick={handleSubmit} />
+      <SearchButton
+        aria-label="Search"
+        onClick={handleSubmit}
+        type="submit"
+      />
     </SearchForm>
   );
 };
