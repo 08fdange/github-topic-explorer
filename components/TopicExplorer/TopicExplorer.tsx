@@ -9,16 +9,16 @@ const MainContainer = styled.div`
   justify-content: space-between;
 `;
 
-const TopicExplorer = () => {
-  const [currentTopic, setCurrentTopic] = useState('react');
-  const [history, setHistory] = useState(['react']);
+const TopicExplorer: React.FC = () => {
+  const [currentTopic, setCurrentTopic] = useState<string>('react');
+  const [history, setHistory] = useState<string[]>(['react']);
 
-  const handleTopicClick = (topicName) => {
+  const handleTopicClick = (topicName: string) => {
     setCurrentTopic(topicName);
     setHistory((prevHistory) => [...prevHistory, topicName]);
   };
 
-  const handleHistoryClick = (index) => {
+  const handleHistoryClick = (index: number) => {
     setHistory((prevHistory) => {
       const newHistory = prevHistory.slice(0, index + 1);
       setCurrentTopic(newHistory[newHistory.length - 1]);
@@ -47,4 +47,5 @@ const TopicExplorer = () => {
 };
 
 export default TopicExplorer;
+
 

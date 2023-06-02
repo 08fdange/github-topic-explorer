@@ -1,6 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
+
+interface HistoryProps {
+  handleHistoryClick: (index: number) => void;
+  history: string[];
+}
 
 const HistoryContainer = styled.section`
   border-right: 0.5px solid rgba(255,255,255,0.7);
@@ -33,7 +37,7 @@ const HistoryEntry = styled.button`
   }
 `;
 
-const History = ({ handleHistoryClick, history }) => {
+const History: React.FC<HistoryProps> = ({ handleHistoryClick, history }) => {
   return (
     <HistoryContainer aria-label="History">
       <HistoryTitle>History</HistoryTitle>
@@ -50,9 +54,5 @@ const History = ({ handleHistoryClick, history }) => {
   );
 };
 
-History.propTypes = {
-  handleHistoryClick: PropTypes.func.isRequired,
-  history: PropTypes.arrayOf(PropTypes.string).isRequired
-};
-
 export default History;
+

@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState, ChangeEvent, FormEvent } from 'react';
 import styled from '@emotion/styled';
+
+interface SearchBarProps {
+  onSearch: (searchTerm: string) => void;
+};
 
 const SearchForm = styled.form`
   background-color: #161b22;
@@ -45,14 +48,14 @@ const SearchButton = styled.button`
   opacity: 0.7;
 `;
 
-const SearchBar = ({ onSearch }) => {
+const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = useState('');
 
-  const handleChange = (event) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
     if (!searchTerm) return;
     onSearch(searchTerm);
@@ -76,10 +79,6 @@ const SearchBar = ({ onSearch }) => {
       />
     </SearchForm>
   );
-};
-
-SearchBar.propTypes = {
-  onSearch: PropTypes.func.isRequired
 };
 
 export default SearchBar;
