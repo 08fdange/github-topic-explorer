@@ -1,4 +1,4 @@
-import { useQuery, gql } from '@apollo/client';
+import { ApolloError, useQuery, gql } from '@apollo/client';
 
 const GET_RELATED_TOPICS = gql`
   query GetRelatedTopics($topicName: String!, $first: Int!) {
@@ -12,7 +12,7 @@ const GET_RELATED_TOPICS = gql`
   }
 `;
 
-const useRelatedTopics = (topicName, first = 10) => {
+const useRelatedTopics = (topicName: string, first: number = 10) => {
   const { loading, error, data } = useQuery(GET_RELATED_TOPICS, {
     variables: { topicName, first },
   });

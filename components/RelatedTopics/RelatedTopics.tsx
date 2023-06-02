@@ -1,9 +1,18 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import formatCount from '../../utils/formatCount';
 import useRelatedTopics from '../../hooks/useRelatedTopics';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
+
+interface TopicData {
+  name: string;
+  stargazerCount: number;
+};
+
+interface RelatedTopicsProps {
+  onTopicClick: (topicName: string) => void;
+  topicName: string;
+};
 
 const TopicSection = styled.div`
   box-sizing: border-box;
@@ -84,7 +93,7 @@ const Starcount = styled.div`
   }
 `;
 
-const RelatedTopics = ({ onTopicClick, topicName }) => {
+const RelatedTopics: React.FC<RelatedTopicsProps> = ({ onTopicClick, topicName }) => {
   const { error, loading, topics } = useRelatedTopics(topicName);
 
   if (error || loading) {
@@ -104,7 +113,7 @@ const RelatedTopics = ({ onTopicClick, topicName }) => {
       </CurrentTopic>
       <TopicsContainer aria-label="Related topics">
         {topics.length < 1 && (<TopicName>There are no related topics.</TopicName>)}
-        {topics.map(({ name, stargazerCount }) => (
+        {topics.map(({ name, stargazerCount }: TopicData) => (
           <Topic
             aria-label={`Topic ${name} with ${stargazerCount} stars`}
             key={name} 
@@ -123,10 +132,6 @@ const RelatedTopics = ({ onTopicClick, topicName }) => {
   );
 };
 
-RelatedTopics.propTypes = {
-  onTopicClick: PropTypes.func.isRequired,
-  topicName: PropTypes.string.isRequired,
-};
-
 export default RelatedTopics;
+
 

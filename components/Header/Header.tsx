@@ -1,9 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Image from 'next/image';
-import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import SearchBar from '../SearchBar/SearchBar';
+
+interface HeaderProps {
+  onSearch: (searchTerm: string) => void;
+  title: string;
+}
 
 const HeaderContainer = styled.div`
   align-items: center;
@@ -28,19 +31,18 @@ const Title = styled.h3`
   margin: 0;
 `;
 
-const githubIconStyles = css`
+const GithubIcon = styled(Image)`
   margin-left: 16px;
 `;
 
-const Header = ({ onSearch, title }) => {
+const Header: React.FC<HeaderProps> = ({ onSearch, title }) => {
   return (
     <HeaderContainer aria-label="Header" role="banner">
-      <Image
+      <GithubIcon
         src="/icons/github-icon.svg"
         alt="Github Icon"
         height={40}
         width={40}
-        css={githubIconStyles}
       />
       <SearchBar onSearch={onSearch} />
       <TitleContainer>
@@ -50,11 +52,6 @@ const Header = ({ onSearch, title }) => {
       </TitleContainer>
     </HeaderContainer>
   )
-};
-
-Header.propTypes = {
-  onSearch: PropTypes.func.isRequired,
-  title: PropTypes.string.isRequired
 };
 
 export default Header;
